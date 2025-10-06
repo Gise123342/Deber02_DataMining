@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: "Dimensión de fechas con jerarquías año, mes, día, tipo de día."
+    columns:
+      - name: date_actual
+        tests: [not_null, unique]
+
+  - name: dim_zone
+    description: "Dimensión geográfica de zonas y boroughs."
+    columns:
+      - name: zone_name
+        tests: [not_null]
+
+  - name: dim_vendor
+    description: "Dimensión de proveedores de servicio (VendorID)."
+    columns:
+      - name: vendor_id
+        tests: [unique, not_null]
+
+  - name: dim_rate_code
+    description: "Dimensión de códigos tarifarios (RatecodeID)."
+    columns:
+      - name: rate_code_id
+        tests: [unique, not_null]
+
+  - name: dim_payment_type
+    description: "Dimensión de métodos de pago (Credit, Cash, etc.)"
+    columns:
+      - name: payment_type_id
+        tests: [unique, not_null]
+      - name: payment_type_desc
+        tests: [not_null]
+
+  - name: dim_service_type
+    description: "Dimensión del tipo de servicio (yellow/green)."
+    columns:
+      - name: service_type_id
+        tests: [unique, not_null]
+      - name: service_desc
+        tests: [not_null]
+
+  - name: dim_trip_type
+    description: "Dimensión del tipo de viaje (street-hail o dispatch)."
+    columns:
+      - name: trip_type
+        tests: [unique, not_null]
+      - name: trip_type_desc
+        tests: [not_null]
+        
+  - name: fact_trips
+    description: "Tabla de hechos consolidada a nivel de viaje."
+    columns:
+      - name: total_trips
+        tests: [not_null]
+      - name: total_revenue
+        tests: [not_null]

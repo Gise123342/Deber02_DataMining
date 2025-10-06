@@ -1,0 +1,225 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: blue
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: dbt_env_setup_gold
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks: []
+  uuid: dbt_env_setup_gold
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dbt_project_name: dbt
+    file_path: dbt/models/gold/dim_date.sql
+    file_source:
+      path: dbt/models/gold/dim_date.sql
+      project_path: dbt
+    limit: 1000
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/models/gold/dim_date
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks: []
+  uuid: dbt/models/gold/dim_date
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dbt_project_name: dbt
+    file_path: dbt/models/gold/dim_zone.sql
+    file_source:
+      path: dbt/models/gold/dim_zone.sql
+      project_path: dbt
+    limit: 1000
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/models/gold/dim_zone
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks: []
+  uuid: dbt/models/gold/dim_zone
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dbt_project_name: dbt
+    file_path: dbt/models/gold/dim_vendor.sql
+    file_source:
+      path: dbt/models/gold/dim_vendor.sql
+      project_path: dbt
+    limit: 1000
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/models/gold/dim_vendor
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks: []
+  uuid: dbt/models/gold/dim_vendor
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dbt_project_name: dbt
+    file_path: dbt/models/gold/dim_rate_code.sql
+    file_source:
+      path: dbt/models/gold/dim_rate_code.sql
+      project_path: dbt
+    limit: 1000
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/models/gold/dim_rate_code
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks: []
+  uuid: dbt/models/gold/dim_rate_code
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dbt_project_name: dbt
+    file_path: dbt/models/gold/dim_payment_type.sql
+    file_source:
+      path: dbt/models/gold/dim_payment_type.sql
+      project_path: dbt
+    limit: 1000
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/models/gold/dim_payment_type
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks: []
+  uuid: dbt/models/gold/dim_payment_type
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dbt_project_name: dbt
+    file_path: dbt/models/gold/dim_service_type.sql
+    file_source:
+      path: dbt/models/gold/dim_service_type.sql
+      project_path: dbt
+    limit: 1000
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/models/gold/dim_service_type
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks: []
+  uuid: dbt/models/gold/dim_service_type
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dbt_project_name: dbt
+    file_path: dbt/models/gold/dim_trip_type.sql
+    file_source:
+      path: dbt/models/gold/dim_trip_type.sql
+      project_path: dbt
+    limit: 1000
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/models/gold/dim_trip_type
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks: []
+  uuid: dbt/models/gold/dim_trip_type
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dbt_project_name: dbt
+    file_path: dbt/models/gold/fact_trips.sql
+    file_source:
+      path: dbt/models/gold/fact_trips.sql
+      project_path: dbt
+    limit: 1000
+  downstream_blocks:
+  - gold_test
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/models/gold/fact_trips
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks: []
+  uuid: dbt/models/gold/fact_trips
+- all_upstream_blocks_executed: true
+  color: pink
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: gold_test
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - dbt/models/gold/fact_trips
+  uuid: gold_test
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2025-10-05 18:35:55.005133+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: gold
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: gold
+variables_dir: /home/src/mage_data/scheduler
+widgets: []

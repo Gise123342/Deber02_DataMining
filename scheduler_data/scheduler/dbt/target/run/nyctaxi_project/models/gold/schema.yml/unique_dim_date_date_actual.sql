@@ -1,0 +1,22 @@
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    date_actual as unique_field,
+    count(*) as n_records
+
+from NYCTAXI.GOLD.DIM_DATE
+where date_actual is not null
+group by date_actual
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test

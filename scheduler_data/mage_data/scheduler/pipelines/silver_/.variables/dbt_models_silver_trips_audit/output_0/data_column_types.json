@@ -1,0 +1,1 @@
+{"AUDIT_TS": "datetime64[ns, pytz.FixedOffset(-420)]", "SERVICE_TYPE": "str", "TOTAL_RAW": "int64", "TOTAL_CLEAN": "int64", "RECORDS_REMOVED": "int64", "PCT_RETAINED": "Decimal"}

@@ -1,0 +1,14 @@
+name: nyctaxi_project
+version: 1.0.0
+config-version: 2
+
+profile: interpolated
+
+model-paths: ["models"]
+target-path: "target"
+clean-targets: ["target"]
+
+models:
+  nyctaxi_project:
+    +materialized: table
+

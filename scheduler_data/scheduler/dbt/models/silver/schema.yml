@@ -1,0 +1,153 @@
+version: 2
+
+models:
+  - name: trips_clean
+    description: "Datos de viajes Yellow Taxi limpios y estandarizados en la capa Silver."
+    columns:
+      - name: pickup_ts
+        description: "Fecha y hora de inicio del viaje."
+        tests:
+          - not_null
+      - name: dropoff_ts
+        description: "Fecha y hora de finalización del viaje."
+        tests:
+          - not_null
+      - name: passenger_count
+        description: "Número de pasajeros registrados para el viaje."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1,2,3,4,5,6,7,8]
+      - name: trip_distance
+        description: "Distancia del viaje en millas."
+        tests:
+          - not_null
+      - name: fare_amount
+        description: "Monto de la tarifa principal del viaje."
+        tests:
+          - not_null
+      - name: payment_type
+        description: "Tipo de método de pago legible."
+        tests:
+          - accepted_values:
+              values: ['Credit card', 'Cash', 'No charge', 'Dispute', 'Unknown', 'Voided trip', 'Other']
+      - name: pickup_zone
+        description: "Zona donde se recoge al pasajero."
+        tests:
+          - relationships:
+              to: source('RAW', 'TAXI_ZONE_LOOKUP')
+              field: ZONE
+      - name: dropoff_zone
+        description: "Zona donde se deja al pasajero."
+        tests:
+          - relationships:
+              to: source('RAW', 'TAXI_ZONE_LOOKUP')
+              field: ZONE
+      - name: service_type
+        description: "Tipo de servicio (yellow)."
+        tests:
+          - accepted_values:
+              values: ['yellow']
+
+  - name: trips_clean_green
+    description: "Datos de viajes Green Taxi limpios y estandarizados en la capa Silver."
+    columns:
+      - name: pickup_ts
+        description: "Fecha y hora de inicio del viaje."
+        tests:
+          - not_null
+      - name: dropoff_ts
+        description: "Fecha y hora de finalización del viaje."
+        tests:
+          - not_null
+      - name: passenger_count
+        description: "Número de pasajeros registrados para el viaje."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1,2,3,4,5,6,7,8]
+      - name: trip_distance
+        description: "Distancia del viaje en millas."
+        tests:
+          - not_null
+      - name: fare_amount
+        description: "Monto de la tarifa principal del viaje."
+        tests:
+          - not_null
+      - name: payment_type
+        description: "Tipo de método de pago legible."
+        tests:
+          - accepted_values:
+              values: ['Credit card', 'Cash', 'No charge', 'Dispute', 'Unknown', 'Voided trip', 'Other']
+      - name: pickup_zone
+        description: "Zona donde se recoge al pasajero."
+        tests:
+          - relationships:
+              to: source('RAW', 'TAXI_ZONE_LOOKUP')
+              field: ZONE
+      - name: dropoff_zone
+        description: "Zona donde se deja al pasajero."
+        tests:
+          - relationships:
+              to: source('RAW', 'TAXI_ZONE_LOOKUP')
+              field: ZONE
+      - name: service_type
+        description: "Tipo de servicio (green)."
+        tests:
+          - accepted_values:
+              values: ['green']
+
+  - name: trips_clean_all
+    description: "Dataset unificado de Yellow y Green Taxi limpio, estandarizado y enriquecido con zonas en la capa Silver."
+    columns:
+      - name: pickup_ts
+        description: "Fecha y hora de inicio del viaje."
+        tests:
+          - not_null
+      - name: dropoff_ts
+        description: "Fecha y hora de finalización del viaje."
+        tests:
+          - not_null
+      - name: passenger_count
+        description: "Número de pasajeros registrados para el viaje."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1,2,3,4,5,6,7,8]
+      - name: service_type
+        description: "Tipo de servicio (yellow o green)."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['yellow', 'green']
+      - name: payment_type
+        description: "Método de pago legible."
+        tests:
+          - accepted_values:
+              values: ['Credit card', 'Cash', 'No charge', 'Dispute', 'Unknown', 'Voided trip', 'Other']
+      - name: pickup_zone
+        description: "Zona de inicio del viaje."
+        tests:
+          - relationships:
+              to: source('RAW', 'TAXI_ZONE_LOOKUP')
+              field: ZONE
+      - name: dropoff_zone
+        description: "Zona de finalización del viaje."
+        tests:
+          - relationships:
+              to: source('RAW', 'TAXI_ZONE_LOOKUP')
+              field: ZONE
+
+  - name: trips_audit
+    description: "Tabla de auditoría de la capa Silver. Compara registros crudos vs. limpios (YELLOW y GREEN)."
+    columns:
+      - name: service_type
+        description: "Tipo de servicio auditado (yellow o green)."
+      - name: total_raw
+        description: "Cantidad total de registros en la capa RAW."
+      - name: total_clean
+        description: "Cantidad total de registros limpios en la capa SILVER."
+      - name: records_removed
+        description: "Número de registros descartados durante la limpieza."
+      - name: pct_retained
+        description: "Porcentaje de filas retenidas luego de la limpieza."

@@ -1,0 +1,1 @@
+{"TRIP_YEAR": "int64", "TRIP_MONTH": "int64", "PICKUP_BOROUGH": "str", "PICKUP_ZONE": "str", "TOTAL_TRIPS": "int64", "AVG_DISTANCE_KM": "Decimal", "AVG_TRIP_MINUTES": "Decimal", "AVG_FARE_AMOUNT": "Decimal", "AVG_TIP_AMOUNT": "Decimal", "AVG_TIP_PERCENT": "Decimal", "TOTAL_REVENUE": "Decimal"}
