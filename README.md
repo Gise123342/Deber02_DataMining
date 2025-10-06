@@ -107,3 +107,22 @@ para mejorar el rendimiento de consultas filtradas o agregadas por esas columnas
 <img width="771" height="268" alt="image" src="https://github.com/user-attachments/assets/77f7230e-cc39-42cd-aa03-0e84f50dac79" />
 Esto crea tu tabla GOLD.FACT_TRIPS con clustering físico por esas tres columnas,
 optimizando las consultas más comunes (por año, mes y borough).
+
+## Pruebas (qué validan y cómo interpretar resultados).
+Se utilizo test de prueba en cada capa (silver y gold). Las pruebas se hicieron por medio de archivos de schema.yml para cada uno los cuales contienen test para cada fase de transicion de datos:
+<img width="270" height="348" alt="image" src="https://github.com/user-attachments/assets/814a2c01-a645-421f-80b6-1885a94f34c5" />
+**Silver**
+<img width="1143" height="771" alt="image" src="https://github.com/user-attachments/assets/26101a90-625d-4606-861b-dc9339e69313" />
+**gold**
+<img width="827" height="765" alt="image" src="https://github.com/user-attachments/assets/e0342c97-d707-4eff-9bff-8b8711cdb635" />
+**interpretacion**
+Interpretación:
+Un resultado PASS confirma que las reglas de limpieza y modelado se cumplieron correctamente.
+Cualquier FAIL indicaría un error en SILVER (pre-filtrado o tipificación).
+<img width="947" height="672" alt="image" src="https://github.com/user-attachments/assets/08dc364c-63ff-4380-8311-c40255951163" />
+| Tipo de test     | Validación                                 | Resultado |
+| ---------------- | ------------------------------------------ | --------- |
+| unique           | Garantiza unicidad de claves de dimensión  | Passed    |
+| not_null         | Asegura integridad de atributos críticos   | Passed    |
+| relationships    | Verifica integridad FACT ↔ DIM             | Passed    |
+| Auditoría SILVER | Compara RAW vs SILVER (total de registros) | Passed    |
