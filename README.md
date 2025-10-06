@@ -131,3 +131,8 @@ Cualquier FAIL indicaría un error en SILVER (pre-filtrado o tipificación).
 ## Troubleshooting (archivos faltantes, fallas de carga, límites, costos).
 Lo unico que falto de implementar por problemas en la implementacion fue la utilizacion de todos los años. Se tuvo problemas al momento de cargar los archivos por la cantidad de datos obtenidos. 
 
+## Valores ocultos en secrets (definidos tambien en io.config
+
+<img width="370" height="261" alt="image" src="https://github.com/user-attachments/assets/4257aba1-06bc-452b-a2ad-af87237f1ef9" />
+
+
