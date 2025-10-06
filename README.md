@@ -120,9 +120,14 @@ Interpretación:
 Un resultado PASS confirma que las reglas de limpieza y modelado se cumplieron correctamente.
 Cualquier FAIL indicaría un error en SILVER (pre-filtrado o tipificación).
 <img width="947" height="672" alt="image" src="https://github.com/user-attachments/assets/08dc364c-63ff-4380-8311-c40255951163" />
+
 | Tipo de test     | Validación                                 | Resultado |
 | ---------------- | ------------------------------------------ | --------- |
 | unique           | Garantiza unicidad de claves de dimensión  | Passed    |
 | not_null         | Asegura integridad de atributos críticos   | Passed    |
 | relationships    | Verifica integridad FACT ↔ DIM             | Passed    |
 | Auditoría SILVER | Compara RAW vs SILVER (total de registros) | Passed    |
+
+## Troubleshooting (archivos faltantes, fallas de carga, límites, costos).
+Lo unico que falto de implementar por problemas en la implementacion fue la utilizacion de todos los años. Se tuvo problemas al momento de cargar los archivos por la cantidad de datos obtenidos. 
+
