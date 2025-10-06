@@ -178,12 +178,12 @@ blocks:
   language: sql
   name: dbt/models/gold/fact_trips
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: dbt
   upstream_blocks: []
   uuid: dbt/models/gold/fact_trips
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: pink
   configuration: {}
   downstream_blocks: []
