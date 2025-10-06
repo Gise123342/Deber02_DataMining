@@ -102,3 +102,8 @@ Incluye siete dimensiones conformadas y una tabla de hechos principal (FACT_TRIP
 ara optimizar el rendimiento analítico se definió clustering automático sobre las columnas:
 pickup_year
 pickup_borough
+Snowflake permite definir claves de clustering (Cluster Keys) en tablas grandes
+para mejorar el rendimiento de consultas filtradas o agregadas por esas columnas.
+<img width="771" height="268" alt="image" src="https://github.com/user-attachments/assets/77f7230e-cc39-42cd-aa03-0e84f50dac79" />
+Esto crea tu tabla GOLD.FACT_TRIPS con clustering físico por esas tres columnas,
+optimizando las consultas más comunes (por año, mes y borough).
